@@ -1,0 +1,18 @@
+name: seeip_client
+version: 0.1.0
+description: A library that makes it easy to fetch data from SeeIP - A simple IP address API.
+author: Mad About Brighton
+homepage: https://madaboutbrighton.net/projects/seeip_client
+repository: https://github.com/madaboutbrighton/seeip_client
+issue_tracker: https://github.com/madaboutbrighton/seeip_client/issues
+
+environment:
+  sdk: '>=2.1.0 <3.0.0'
+
+dependencies:
+  http: ^0.12.0+2
+
+dev_dependencies:
+  mockito: ^4.0.0
+  pedantic: ^1.0.0
+  test: ^1.0.0
