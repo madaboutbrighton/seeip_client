@@ -1,6 +1,6 @@
 # seeip client
 
-A library that makes it easy to fetch data from SeeIP - A simple IP address API.
+A library that makes it easy to fetch data from [SeeIP](https://seeip.org/) - A simple IP address API.
 
 This is a pure Dart library which relies on the http package. Therefore, it can be used cross-platform, from Flutter to Web to server-side.
 
