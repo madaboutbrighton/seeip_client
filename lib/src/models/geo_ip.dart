@@ -51,19 +51,36 @@ class GeoIP {
         area_code: map["area_code"],
         timezone: map["timezone"],
         offset: map["offset"],
-        longitude: map["longitude"],
+        longitude: _toDouble(map["longitude"]),
         country_code3: map["country_code3"],
         postal_code: map["postal_code"],
         continent_code: map["continent_code"],
         country: map["country"],
         region_code: map["region_code"],
         country_code: map["country_code"],
-        latitude: map["latitude"]
+        latitude: _toDouble(map["latitude"]),
     );
   }
 
   @override
   String toString() {
     return 'GeoIP {ip: $ip, organization: $organization, city: $city, region: $region, dma_code: $dma_code, area_code: $area_code, timezone: $timezone, offset: $offset, longitude: $longitude, country_code3: $country_code3, postal_code: $postal_code, continent_code: $continent_code, country: $country, region_code: $region_code, country_code: $country_code, latitude: $latitude}';
+  }
+
+  /// Convert [value] to a double.
+  static double _toDouble(var value) {
+
+    // Convert a [String], for example "3.7", to a double
+    if (value is String) {
+      value = double.parse(value);
+    }
+
+    // Convert an [int], for example 5, to a double
+    if (value is int) {
+      // dividing 2 integers creates a double
+      value = value / 1;
+    }
+
+    return value;
   }
 }
