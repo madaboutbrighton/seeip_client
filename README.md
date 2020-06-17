@@ -14,10 +14,8 @@ Please see example/seeip_client_example.dart for more examples.
 import 'package:seeip_client/seeip_client.dart';
 
 main() async {
-  SeeipClient seeip = SeeipClient();
-
-  OnlyIP ipaddress = await seeip.getIP();
-
+  var seeip = SeeipClient();
+  var ipaddress = await seeip.getIP();
   print(ipaddress);
 }
 ```
