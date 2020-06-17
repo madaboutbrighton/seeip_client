@@ -8,7 +8,7 @@ This is a pure Dart library which relies on the http package. Therefore, it can 
 
 You can fetch data from SeeIP without any api or auth tokens. Simply create an instance of the SeeipClient class.
 
-Please see example/seeip_client_example.dart for moe examples.
+Please see example/seeip_client_example.dart for more examples.
 
 ```dart
 import 'package:seeip_client/seeip_client.dart';
