@@ -42,22 +42,22 @@ class GeoIP {
 
   static GeoIP fromJson(Map<String, dynamic> map) {
     return GeoIP(
-        ip: map['ip'],
-        organization: map['organization'],
-        city: map['city'],
-        region: map['region'],
-        dma_code: map['dma_code'],
-        area_code: map['area_code'],
-        timezone: map['timezone'],
-        offset: _toInt(map['offset']),
-        longitude: _toDouble(map['longitude']),
-        country_code3: map['country_code3'],
-        postal_code: map['postal_code'],
-        continent_code: map['continent_code'],
-        country: map['country'],
-        region_code: map['region_code'],
-        country_code: map['country_code'],
-        latitude: _toDouble(map['latitude']),
+      ip: map['ip'],
+      organization: map['organization'],
+      city: map['city'],
+      region: map['region'],
+      dma_code: map['dma_code'],
+      area_code: map['area_code'],
+      timezone: map['timezone'],
+      offset: _toInt(map['offset']),
+      longitude: _toDouble(map['longitude']),
+      country_code3: map['country_code3'],
+      postal_code: map['postal_code'],
+      continent_code: map['continent_code'],
+      country: map['country'],
+      region_code: map['region_code'],
+      country_code: map['country_code'],
+      latitude: _toDouble(map['latitude']),
     );
   }
 
@@ -68,7 +68,6 @@ class GeoIP {
 
   /// Convert [value] to an [int].
   static int _toInt(var value) {
-
     // Convert a [String], for example "123", to an int
     if (value is String) {
       value = int.tryParse(value) ?? 0;
@@ -84,7 +83,6 @@ class GeoIP {
 
   /// Convert [value] to a [double].
   static double _toDouble(var value) {
-
     // Convert a [String], for example "3.7", to a [double]
     if (value is String) {
       value = double.parse(value);
