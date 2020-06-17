@@ -13,7 +13,7 @@ class OnlyIP {
 
   static OnlyIP fromJson(Map<String, dynamic> map) {
     return OnlyIP(
-        ip: map["ip"]
+        ip: map['ip']
     );
   }
 
