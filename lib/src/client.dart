@@ -24,18 +24,14 @@ class SeeipClient {
   /// The returned data will relate to [ip].
   /// If [ip] is ommitted, the data will relate to the requesting device's ip address.
   Future<GeoIP> getGeoIP([String ip]) async {
-
-    List<String> segments = ["geoip"];
+    var segments = ['geoip'];
     if (ip != null) segments.add(ip);
 
     final uri = _buildUri('ip', segments);
 
-    Response response = await _getWithResilience(uri);
-
+    var response = await _getWithResilience(uri);
     var map = json.decode(response.body);
-
     var geoip = GeoIP.fromJson(map);
-
     return geoip;
   }
 
@@ -43,15 +39,10 @@ class SeeipClient {
   ///
   /// The result could be IPv4 or IPv6, depending on the client.
   Future<OnlyIP> getIP() async {
-
-    Uri uri = _buildUri('ip', ["json"]);
-
-    Response response = await _getWithResilience(uri);
-
-    Map map = json.decode(response.body);
-
-    OnlyIP ipaddress = OnlyIP.fromJson(map);
-
+    var uri = _buildUri('ip', ['json']);
+    var response = await _getWithResilience(uri);
+    var map = json.decode(response.body);
+    var ipaddress = OnlyIP.fromJson(map);
     return ipaddress;
   }
 
@@ -59,18 +50,13 @@ class SeeipClient {
   ///
   /// Only the IPv4 address is returned.
   Future<OnlyIP> getIPv4() async {
-
-    Uri uri = _buildUri('ip4', ["json"]);
-
-    Response response = await _getWithResilience(uri);
-
-    if (response.statusCode != 200)
-      throw new Exception("Request status not successful for $uri");
-
-    Map map = json.decode(response.body);
-
-    OnlyIP ipaddress = OnlyIP.fromJson(map);
-
+    var uri = _buildUri('ip4', ['json']);
+    var response = await _getWithResilience(uri);
+    if (response.statusCode != 200) {
+      throw Exception('Request status not successful for $uri');
+    }
+    var map = json.decode(response.body);
+    var ipaddress = OnlyIP.fromJson(map);
     return ipaddress;
   }
 
@@ -79,28 +65,20 @@ class SeeipClient {
   /// Only the IPv6 address is returned.
   /// This function currently raises an error until it is fully supported on seeip.org
   Future<OnlyIP> getIPv6() async {
-
-    Uri uri = _buildUri('ip6', ["json"]);
-
-    Response response = await _getWithResilience(uri);
-
-    Map map = json.decode(response.body);
-
-    OnlyIP ipaddress = OnlyIP.fromJson(map);
-
+    var uri = _buildUri('ip6', ['json']);
+    var response = await _getWithResilience(uri);
+    var map = json.decode(response.body);
+    var ipaddress = OnlyIP.fromJson(map);
     return ipaddress;
   }
 
   /// Constructs a well formatted URL.
   Uri _buildUri([String subdomain, List<String> segments]) {
-
-    Uri uri = Uri(
-        scheme: "https",
-        host: "$subdomain.seeip.org",
+    var uri = Uri(
+        scheme: 'https',
+        host: '$subdomain.seeip.org',
         pathSegments: segments);
-
     print(uri);
-
     return uri;
   }
 
@@ -108,16 +86,13 @@ class SeeipClient {
   ///
   /// Retires if server is busy, rather than crashing out.
   Future<Response> _getWithResilience(Uri uri) async {
-
-    Response response;
-
-    response = await _client.get(uri);
+    var response = await _client.get(uri);
 
     switch (response.statusCode) {
       // Too many requests
       case 429:
-        var retryAfter = int.parse(response.headers["retry-after"]);
-        await new Future.delayed(new Duration(seconds: retryAfter));
+        var retryAfter = int.parse(response.headers['retry-after']);
+        await Future.delayed(Duration(seconds: retryAfter));
         return await _getWithResilience(uri);
 
       // OK
@@ -125,7 +100,7 @@ class SeeipClient {
         return response;
 
       default:
-        throw new Exception("Request status not successful for $uri");
+        throw Exception('Request status not successful for $uri');
     }
   }
 }

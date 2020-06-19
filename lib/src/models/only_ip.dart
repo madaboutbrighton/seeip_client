@@ -4,7 +4,6 @@
 
 /// This class is used to store the response when requesting only the IP address.
 class OnlyIP {
-
   String ip;
 
   OnlyIP({
@@ -12,9 +11,7 @@ class OnlyIP {
   });
 
   static OnlyIP fromJson(Map<String, dynamic> map) {
-    return OnlyIP(
-        ip: map["ip"]
-    );
+    return OnlyIP(ip: map['ip']);
   }
 
   @override
