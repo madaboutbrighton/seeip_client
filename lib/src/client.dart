@@ -17,13 +17,13 @@ class SeeipClient {
   /// and a MockClient for testing.
   ///
   /// If no [client] is provided, one is created under the hood.
-  SeeipClient({Client client}) : _client = client ?? Client();
+  SeeipClient({Client? client}) : _client = client ?? Client();
 
   /// Obtains IP address plus additional details, such as location and organisation.
   ///
   /// The returned data will relate to [ip].
   /// If [ip] is ommitted, the data will relate to the requesting device's ip address.
-  Future<GeoIP> getGeoIP([String ip]) async {
+  Future<GeoIP> getGeoIP([String? ip]) async {
     var segments = ['geoip'];
     if (ip != null) segments.add(ip);
 
@@ -73,7 +73,7 @@ class SeeipClient {
   }
 
   /// Constructs a well formatted URL.
-  Uri _buildUri([String subdomain, List<String> segments]) {
+  Uri _buildUri([String? subdomain, List<String>? segments]) {
     var uri = Uri(
         scheme: 'https',
         host: '$subdomain.seeip.org',
@@ -91,7 +91,7 @@ class SeeipClient {
     switch (response.statusCode) {
       // Too many requests
       case 429:
-        var retryAfter = int.parse(response.headers['retry-after']);
+        var retryAfter = int.parse(response.headers['retry-after']!);
         await Future.delayed(Duration(seconds: retryAfter));
         return await _getWithResilience(uri);
 

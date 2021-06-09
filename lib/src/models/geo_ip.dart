@@ -4,22 +4,22 @@
 
 /// This class is used to store the response when requesting geo IP information.
 class GeoIP {
-  String ip;
-  String organization;
-  String city;
-  String region;
-  String dma_code;
-  String area_code;
-  String timezone;
-  int offset;
-  double longitude;
-  String country_code3;
-  String postal_code;
-  String continent_code;
-  String country;
-  String region_code;
-  String country_code;
-  double latitude;
+  String? ip;
+  String? organization;
+  String? city;
+  String? region;
+  String? dma_code;
+  String? area_code;
+  String? timezone;
+  int? offset;
+  double? longitude;
+  String? country_code3;
+  String? postal_code;
+  String? continent_code;
+  String? country;
+  String? region_code;
+  String? country_code;
+  double? latitude;
 
   GeoIP({
     this.ip,
@@ -67,22 +67,22 @@ class GeoIP {
   }
 
   /// Convert [value] to an [int].
-  static int _toInt(var value) {
+  static int? _toInt(var value) {
     // Convert a [String], for example "123", to an int
     if (value is String) {
-      value = int.tryParse(value) ?? 0;
+      value = int.tryParse(value) as String? ?? 0 as String;
     }
 
     // Convert an [double], for example 5.5, to an int
     if (value is double) {
-      value = int.tryParse(value.toString()) ?? 0;
+      value = int.tryParse(value.toString()) as double? ?? 0;
     }
 
     return value;
   }
 
   /// Convert [value] to a [double].
-  static double _toDouble(var value) {
+  static double? _toDouble(var value) {
     // Convert a [String], for example "3.7", to a [double]
     if (value is String) {
       value = double.parse(value);
