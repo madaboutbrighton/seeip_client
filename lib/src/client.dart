@@ -27,7 +27,7 @@ class SeeipClient {
     var segments = ['geoip'];
     if (ip != null) segments.add(ip);
 
-    final uri = _buildUri('ip', segments);
+    final uri = _buildUri('api', segments);
 
     var response = await _getWithResilience(uri);
     var map = json.decode(response.body);
@@ -39,7 +39,7 @@ class SeeipClient {
   ///
   /// The result could be IPv4 or IPv6, depending on the client.
   Future<OnlyIP> getIP() async {
-    var uri = _buildUri('ip', ['json']);
+    var uri = _buildUri('api', ['jsonip']);
     var response = await _getWithResilience(uri);
     var map = json.decode(response.body);
     var ipaddress = OnlyIP.fromJson(map);
@@ -50,7 +50,7 @@ class SeeipClient {
   ///
   /// Only the IPv4 address is returned.
   Future<OnlyIP> getIPv4() async {
-    var uri = _buildUri('ip4', ['json']);
+    var uri = _buildUri('ipv4', ['jsonip']);
     var response = await _getWithResilience(uri);
     if (response.statusCode != 200) {
       throw Exception('Request status not successful for $uri');
@@ -65,7 +65,7 @@ class SeeipClient {
   /// Only the IPv6 address is returned.
   /// This function currently raises an error until it is fully supported on seeip.org
   Future<OnlyIP> getIPv6() async {
-    var uri = _buildUri('ip6', ['json']);
+    var uri = _buildUri('ipv6', ['jsonip']);
     var response = await _getWithResilience(uri);
     var map = json.decode(response.body);
     var ipaddress = OnlyIP.fromJson(map);
