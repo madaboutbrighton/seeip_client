@@ -18,14 +18,14 @@ void main() {
       var seeip = SeeipClient();
       var ipaddress = await seeip.getIP();
       print(ipaddress);
-      expect(ipaddress is OnlyIP, isTrue);
+      expect(ipaddress.ip == "", isFalse);
     });
 
     test('IPv4Address', () async {
       var seeip = SeeipClient();
       var ipaddress = await seeip.getIPv4();
       print(ipaddress);
-      expect(ipaddress is OnlyIP, isTrue);
+      expect(ipaddress.ip == "", isFalse);
     });
 
   });
@@ -35,14 +35,14 @@ void main() {
       var seeip = SeeipClient();
       var geoip = await seeip.getGeoIP();
       print(geoip);
-      expect(geoip is GeoIP, isTrue);
+      expect(geoip.ip == "", isFalse);
     });
 
     test('GeoIP from IP address', () async {
       var seeip = SeeipClient();
       var geoip = await seeip.getGeoIP('216.58.208.174');
       print(geoip);
-      expect(geoip is GeoIP, isTrue);
+      expect(geoip.ip == "", isFalse);
     });
   });
 
