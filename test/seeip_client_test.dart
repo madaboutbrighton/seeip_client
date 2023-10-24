@@ -54,8 +54,8 @@ void main() {
       var seeip = SeeipClient(client: client);
       var uri = Uri(
           scheme: 'https',
-          host: 'ip.seeip.org',
-          pathSegments: ['json']);
+          host: 'api.seeip.org',
+          pathSegments: ['jsonip']);
 
       // Use Mockito to return a successful response when it calls the
       // provided http.Client.
@@ -73,8 +73,8 @@ void main() {
       var seeip = SeeipClient(client: client);
       var uri = Uri(
           scheme: 'https',
-          host: 'ip.seeip.org',
-          pathSegments: ['json']);
+          host: 'api.seeip.org',
+          pathSegments: ['jsonip']);
 
       // Use Mockito to return a successful response when it calls the
       // provided http.Client.
@@ -99,8 +99,8 @@ void main() {
       var seeip = SeeipClient(client: client);
       var uri = Uri(
           scheme: 'https',
-          host: 'ip6.seeip.org',
-          pathSegments: ['json']);
+          host: 'ipv6.seeip.org',
+          pathSegments: ['jsonip']);
 
       // Use Mockito to return a successful response when it calls the
       // provided http.Client.
@@ -124,7 +124,7 @@ void main() {
       var seeip = SeeipClient(client: client);
       var uri = Uri(
           scheme: 'https',
-          host: 'ip.seeip.org',
+          host: 'api.seeip.org',
           pathSegments: ['geoip']);
 
       // Use Mockito to return a successful response when it calls the
@@ -143,7 +143,7 @@ void main() {
       var seeip = SeeipClient(client: client);
       var uri = Uri(
           scheme: 'https',
-          host: 'ip.seeip.org',
+          host: 'api.seeip.org',
           pathSegments: ['geoip']);
 
       // Use Mockito to return a successful response when it calls the
