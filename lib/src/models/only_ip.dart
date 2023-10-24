@@ -4,7 +4,7 @@
 
 /// This class is used to store the response when requesting only the IP address.
 class OnlyIP {
-  String ip;
+  String? ip;
 
   OnlyIP({
     this.ip,
