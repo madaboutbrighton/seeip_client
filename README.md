@@ -22,4 +22,4 @@ main() async {
 
 ## Features and bugs
 
-Please file feature requests and bugs at the [issue tracker](https://github.com/madaboutbrighton/seeip_client/blob/master/LICENSE.md).
+Please file feature requests and bugs at the [issue tracker](https://github.com/madaboutbrighton/seeip_client/issues).
