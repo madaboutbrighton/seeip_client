@@ -1,6 +1,12 @@
+## 1.0.0
+
+- Breaking change - public api changed to lowerCamelCase. For example...
+  - `GeoIp.country_code` changed to `GeoIp.countryCode`
+  - `GeoIp.region_code` changed to `GeoIp.regionCode`
+
 ## 0.1.3
 
-- Made null safe - with thanks to malkovro.
+- Made null safe - with thanks to [malkovro](https://github.com/malkovro).
 - Made Dart 3 compatible.
 - Bug fix - Now uses latest seeip.org uri format.
 
