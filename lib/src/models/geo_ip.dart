@@ -8,17 +8,17 @@ class GeoIP {
   String? organization;
   String? city;
   String? region;
-  String? dma_code;
-  String? area_code;
+  String? dmaCode;
+  String? areaCode;
   String? timezone;
   int? offset;
   double? longitude;
-  String? country_code3;
-  String? postal_code;
-  String? continent_code;
+  String? countryCode3;
+  String? postalCode;
+  String? continentCode;
   String? country;
-  String? region_code;
-  String? country_code;
+  String? regionCode;
+  String? countryCode;
   double? latitude;
 
   GeoIP({
@@ -26,17 +26,17 @@ class GeoIP {
     this.organization,
     this.city,
     this.region,
-    this.dma_code,
-    this.area_code,
+    this.dmaCode,
+    this.areaCode,
     this.timezone,
     this.offset,
     this.longitude,
-    this.country_code3,
-    this.postal_code,
-    this.continent_code,
+    this.countryCode3,
+    this.postalCode,
+    this.continentCode,
     this.country,
-    this.region_code,
-    this.country_code,
+    this.regionCode,
+    this.countryCode,
     this.latitude,
   });
 
@@ -46,24 +46,24 @@ class GeoIP {
       organization: map['organization'],
       city: map['city'],
       region: map['region'],
-      dma_code: map['dma_code'],
-      area_code: map['area_code'],
+      dmaCode: map['dma_code'],
+      areaCode: map['area_code'],
       timezone: map['timezone'],
       offset: _toInt(map['offset']),
       longitude: _toDouble(map['longitude']),
-      country_code3: map['country_code3'],
-      postal_code: map['postal_code'],
-      continent_code: map['continent_code'],
+      countryCode3: map['country_code3'],
+      postalCode: map['postal_code'],
+      continentCode: map['continent_code'],
       country: map['country'],
-      region_code: map['region_code'],
-      country_code: map['country_code'],
+      regionCode: map['region_code'],
+      countryCode: map['country_code'],
       latitude: _toDouble(map['latitude']),
     );
   }
 
   @override
   String toString() {
-    return 'GeoIP {ip: $ip, organization: $organization, city: $city, region: $region, dma_code: $dma_code, area_code: $area_code, timezone: $timezone, offset: $offset, longitude: $longitude, country_code3: $country_code3, postal_code: $postal_code, continent_code: $continent_code, country: $country, region_code: $region_code, country_code: $country_code, latitude: $latitude}';
+    return 'GeoIP {ip: $ip, organization: $organization, city: $city, region: $region, dmaCode: $dmaCode, areaCode: $areaCode, timezone: $timezone, offset: $offset, longitude: $longitude, countryCode3: $countryCode3, postalCode: $postalCode, continentCode: $continentCode, country: $country, regionCode: $regionCode, countryCode: $countryCode, latitude: $latitude}';
   }
 
   /// Convert [value] to an [int].
