@@ -1,3 +1,7 @@
+## 1.0.1
+
+- Updated code formatting.
+
 ## 1.0.0
 
 - Breaking change - public api changed to lowerCamelCase. For example...
