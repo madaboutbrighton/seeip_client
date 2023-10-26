@@ -1,4 +1,4 @@
-// Copyright (c) 2019, Mad About Brighton. Please see the AUTHORS file
+// Copyright (c) 2023, Mad About Brighton. Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
@@ -27,7 +27,6 @@ void main() {
       print(ipaddress);
       expect(ipaddress.ip == "", isFalse);
     });
-
   });
 
   group('Geo IP tests', () {
@@ -39,7 +38,7 @@ void main() {
     });
 
     test('GeoIP from IP address', () async {
-      String ip = '216.58.208.174';
+      String ip = '208.67.222.222';
       var seeip = SeeipClient();
       var geoip = await seeip.getGeoIP(ip);
       print(geoip);
