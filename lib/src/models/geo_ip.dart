@@ -6,34 +6,49 @@
 class GeoIP {
   /// Public IP address, or IP address specified as parameter.
   String? ip;
+
   /// Autonomous System Number (ASN) + Internet Service Provider (ISP) name.
   String? organization;
+
   /// Name of the city.
   String? city;
+
   /// Name of the region.
   String? region;
+
   /// Designated Market Area (DMA) code (USA and Canada only).
   String? dmaCode;
+
   /// The Public Switch Telephone Network (PSTN) area code.
   String? areaCode;
+
   /// The time zone.
   String? timezone;
+
   /// Universal Coordinated Time (UTC) time offset.
   int? offset;
+
   /// Longitude coordinate.
   double? longitude;
+
   /// Three-letter ISO 3166-1 alpha-3 country code.
   String? countryCode3;
+
   /// Postal/zip code.
   String? postalCode;
+
   /// Two-letter continent code.
   String? continentCode;
+
   /// Name of the country.
   String? country;
+
   /// Two-letter ISO-3166-2 state/region code for US and Canada, FIPS 10-4 region codes otherwise.
   String? regionCode;
+
   /// Two-letter ISO 3166-1 alpha-2 country code.
   String? countryCode;
+
   /// Latitude coordinate.
   double? latitude;
 

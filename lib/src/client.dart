@@ -9,7 +9,6 @@ import 'package:seeip_client/seeip_client.dart';
 
 /// This class is used to interact with the SeeIP API.
 class SeeipClient {
-
   final Client _client;
 
   /// Constructor that allows correct http client to be injected. This will
@@ -102,9 +101,7 @@ class SeeipClient {
   /// ```
   Uri _buildUri([String? subdomain, List<String>? segments]) {
     var uri = Uri(
-        scheme: 'https',
-        host: '$subdomain.seeip.org',
-        pathSegments: segments);
+        scheme: 'https', host: '$subdomain.seeip.org', pathSegments: segments);
     print(uri);
     return uri;
   }

@@ -25,6 +25,7 @@ main() async {
 ```dart
 main() async {
   var seeip = SeeipClient();
+  // Leave out the ip address to return client's ip address information.
   var result = await seeip.getGeoIP('208.67.222.222');
   print(result);
 }
