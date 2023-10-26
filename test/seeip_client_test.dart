@@ -1,4 +1,4 @@
-// Copyright (c) 2019, Mad About Brighton. Please see the AUTHORS file
+// Copyright (c) 2023, Mad About Brighton. Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
@@ -27,7 +27,6 @@ void main() {
       print(ipaddress);
       expect(ipaddress.ip == "", isFalse);
     });
-
   });
 
   group('Geo IP tests', () {
@@ -39,10 +38,11 @@ void main() {
     });
 
     test('GeoIP from IP address', () async {
+      String ip = '208.67.222.222';
       var seeip = SeeipClient();
-      var geoip = await seeip.getGeoIP('216.58.208.174');
+      var geoip = await seeip.getGeoIP(ip);
       print(geoip);
-      expect(geoip.ip == "", isFalse);
+      expect(geoip.ip == ip, isTrue);
     });
   });
 
@@ -81,15 +81,16 @@ void main() {
       when(client.get(uri))
           .thenAnswer((_) async => Response('{"ip": "$myIP"}', 400));
 
-      var ipaddress;
+      bool isError = false;
 
       try {
-        ipaddress = await seeip.getIP();
+        await seeip.getIP();
       } catch(e) {
         //handle exception
+        isError = true;
       }
 
-      expect(ipaddress == null, isTrue);
+      expect(isError, isTrue);
     });
 
     test('getIPv6 unsuccessfully', () async {
@@ -107,15 +108,16 @@ void main() {
       when(client.get(uri))
           .thenAnswer((_) async => Response('{"ip": "$myIP"}', 11001));
 
-      var onlyIP;
+      bool isError = false;
 
       try {
-        onlyIP = await seeip.getIPv6();
+        await seeip.getIPv6();
       } catch(e) {
         //handle exception
+        isError = true;
       }
 
-      expect(onlyIP == null, isTrue);
+      expect(isError, isTrue);
     });
 
     test('getGeoIP successfully', () async {
@@ -151,16 +153,17 @@ void main() {
       when(client.get(uri))
           .thenAnswer((_) async => Response('{"ip": "$myIP"}', 400));
 
-      var geoIP;
+      bool isError = false;
 
       try {
-        geoIP = await seeip.getGeoIP();
+        await seeip.getGeoIP();
       } catch(e) {
         print(e);
         //handle exception
+        isError = true;
       }
 
-      expect(geoIP == null, isTrue);
+      expect(isError, isTrue);
     });
 
   });

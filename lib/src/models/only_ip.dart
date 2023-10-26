@@ -1,9 +1,10 @@
-// Copyright (c) 2019, Mad About Brighton. Please see the AUTHORS file
+// Copyright (c) 2023, Mad About Brighton. Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-/// This class is used to store the response when requesting only the IP address.
+/// Stores the response when requesting only the IP address.
 class OnlyIP {
+  /// Public IP address, or IP address specified as parameter.
   String? ip;
 
   OnlyIP({

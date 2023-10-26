@@ -1,24 +1,40 @@
-// Copyright (c) 2019, Mad About Brighton. Please see the AUTHORS file
+// Copyright (c) 2023, Mad About Brighton. Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-/// This class is used to store the response when requesting geo IP information.
+/// Stores the response when requesting geographical IP address information.
 class GeoIP {
+  /// Public IP address, or IP address specified as parameter.
   String? ip;
+  /// Autonomous System Number (ASN) + Internet Service Provider (ISP) name.
   String? organization;
+  /// Name of the city.
   String? city;
+  /// Name of the region.
   String? region;
-  String? dma_code;
-  String? area_code;
+  /// Designated Market Area (DMA) code (USA and Canada only).
+  String? dmaCode;
+  /// The Public Switch Telephone Network (PSTN) area code.
+  String? areaCode;
+  /// The time zone.
   String? timezone;
+  /// Universal Coordinated Time (UTC) time offset.
   int? offset;
+  /// Longitude coordinate.
   double? longitude;
-  String? country_code3;
-  String? postal_code;
-  String? continent_code;
+  /// Three-letter ISO 3166-1 alpha-3 country code.
+  String? countryCode3;
+  /// Postal/zip code.
+  String? postalCode;
+  /// Two-letter continent code.
+  String? continentCode;
+  /// Name of the country.
   String? country;
-  String? region_code;
-  String? country_code;
+  /// Two-letter ISO-3166-2 state/region code for US and Canada, FIPS 10-4 region codes otherwise.
+  String? regionCode;
+  /// Two-letter ISO 3166-1 alpha-2 country code.
+  String? countryCode;
+  /// Latitude coordinate.
   double? latitude;
 
   GeoIP({
@@ -26,17 +42,17 @@ class GeoIP {
     this.organization,
     this.city,
     this.region,
-    this.dma_code,
-    this.area_code,
+    this.dmaCode,
+    this.areaCode,
     this.timezone,
     this.offset,
     this.longitude,
-    this.country_code3,
-    this.postal_code,
-    this.continent_code,
+    this.countryCode3,
+    this.postalCode,
+    this.continentCode,
     this.country,
-    this.region_code,
-    this.country_code,
+    this.regionCode,
+    this.countryCode,
     this.latitude,
   });
 
@@ -46,24 +62,30 @@ class GeoIP {
       organization: map['organization'],
       city: map['city'],
       region: map['region'],
-      dma_code: map['dma_code'],
-      area_code: map['area_code'],
+      dmaCode: map['dma_code'],
+      areaCode: map['area_code'],
       timezone: map['timezone'],
       offset: _toInt(map['offset']),
       longitude: _toDouble(map['longitude']),
-      country_code3: map['country_code3'],
-      postal_code: map['postal_code'],
-      continent_code: map['continent_code'],
+      countryCode3: map['country_code3'],
+      postalCode: map['postal_code'],
+      continentCode: map['continent_code'],
       country: map['country'],
-      region_code: map['region_code'],
-      country_code: map['country_code'],
+      regionCode: map['region_code'],
+      countryCode: map['country_code'],
       latitude: _toDouble(map['latitude']),
     );
   }
 
   @override
   String toString() {
-    return 'GeoIP {ip: $ip, organization: $organization, city: $city, region: $region, dma_code: $dma_code, area_code: $area_code, timezone: $timezone, offset: $offset, longitude: $longitude, country_code3: $country_code3, postal_code: $postal_code, continent_code: $continent_code, country: $country, region_code: $region_code, country_code: $country_code, latitude: $latitude}';
+    return 'GeoIP {ip: $ip, organization: $organization, city: $city,'
+        'region: $region, dmaCode: $dmaCode, areaCode: $areaCode,'
+        'timezone: $timezone, offset: $offset, longitude: $longitude,'
+        'countryCode3: $countryCode3, postalCode: $postalCode,'
+        'continentCode: $continentCode, country: $country,'
+        'regionCode: $regionCode, countryCode: $countryCode,'
+        'latitude: $latitude}';
   }
 
   /// Convert [value] to an [int].
