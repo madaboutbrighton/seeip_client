@@ -69,9 +69,6 @@ class SeeipClient {
   Future<OnlyIP> getIPv4() async {
     var uri = _buildUri('ipv4', ['jsonip']);
     var response = await _getWithResilience(uri);
-    if (response.statusCode != 200) {
-      throw Exception('Request status not successful for $uri');
-    }
     var map = json.decode(response.body);
     var ipaddress = OnlyIP.fromJson(map);
     return ipaddress;
