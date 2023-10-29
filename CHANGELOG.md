@@ -1,3 +1,9 @@
+## 1.1.0
+
+- Empty strings always return '' instead of null.
+- Empty integers always return zero instead of null.
+- Latitude and longitude can return null if they are empty, as returning zero would give an incorrect location.
+
 ## 1.0.1
 
 - Updated code formatting.

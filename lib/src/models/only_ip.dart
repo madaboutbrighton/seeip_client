@@ -5,14 +5,14 @@
 /// Stores the response when requesting only the IP address.
 class OnlyIP {
   /// Public IP address, or IP address specified as parameter.
-  String? ip;
+  String ip;
 
   OnlyIP({
-    this.ip,
+    this.ip = '',
   });
 
   static OnlyIP fromJson(Map<String, dynamic> map) {
-    return OnlyIP(ip: map['ip']);
+    return OnlyIP(ip: map['ip'] ?? '');
   }
 
   @override
