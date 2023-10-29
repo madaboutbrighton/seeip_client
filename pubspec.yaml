@@ -1,5 +1,5 @@
 name: seeip_client
-version: 1.0.1
+version: 1.1.0
 description: Obtain IP address information using SeeIP - A simple IP address API
 homepage: https://madaboutbrighton.net/projects/seeip-client
 repository: https://github.com/madaboutbrighton/seeip_client
