@@ -10,6 +10,8 @@ You can fetch data from SeeIP without any api or auth tokens. Simply create an i
 
 ### Obtain a public IP address.
 
+Obtain the public IP of the device making the request.
+
 ```dart
 import 'package:seeip_client/seeip_client.dart';
 
@@ -22,6 +24,8 @@ main() async {
 
 ### Obtain geographical IP address information.
 
+Obtain the geographical public IP address information for a specific IP address.
+
 ```dart
 main() async {
   var seeip = SeeipClient();
@@ -30,15 +34,15 @@ main() async {
   print(result);
 }
 ```
+
 Gives the following output...
+
 ```shell
 result {
   ip: 208.67.222.222,
   organization: OPENDNS,
   city: Wright City,
   region: Missouri,
-  dmaCode: null,
-  areaCode: null,
   timezone: America/Chicago,
   offset: -18000,
   longitude: -91.0332,
@@ -51,6 +55,10 @@ result {
   latitude: 38.811
 }
 ```
+
+The requested IP address can be in IPv4 or IPv6 format.
+
+Omit the IP address to return the geographical IP address information for the device making the request.
 
 Please see example/seeip_client_example.dart for more examples.
 
