@@ -12,7 +12,6 @@ import 'seeip_client_test.mocks.dart';
 
 @GenerateMocks([Client])
 void main() {
-
   group('Only IP tests', () {
     test('IPAddress', () async {
       var seeip = SeeipClient();
@@ -27,6 +26,22 @@ void main() {
       print(ipaddress);
       expect(ipaddress.ip == "", isFalse);
     });
+
+    test('IPv6Address', () async {
+      var seeip = SeeipClient();
+      dynamic ipaddress;
+
+      bool isError = false;
+
+      try {
+        ipaddress = await seeip.getIPv6();
+      } catch (e) {
+        isError = true;
+      }
+
+      if (!isError) print(ipaddress);
+      expect(isError, isFalse);
+    });
   });
 
   group('Geo IP tests', () {
@@ -37,8 +52,16 @@ void main() {
       expect(geoip.ip == "", isFalse);
     });
 
-    test('GeoIP from IP address', () async {
+    test('GeoIP from IPv4 address', () async {
       String ip = '208.67.222.222';
+      var seeip = SeeipClient();
+      var geoip = await seeip.getGeoIP(ip);
+      print(geoip);
+      expect(geoip.ip == ip, isTrue);
+    });
+
+    test('GeoIP from IPv6 address', () async {
+      String ip = '2001:4860:4860::8888';
       var seeip = SeeipClient();
       var geoip = await seeip.getGeoIP(ip);
       print(geoip);
@@ -47,15 +70,12 @@ void main() {
   });
 
   group('Mockito client tests', () {
-
     test('getIP successfully', () async {
       final client = MockClient();
       var myIP = '192.168.1.1';
       var seeip = SeeipClient(client: client);
-      var uri = Uri(
-          scheme: 'https',
-          host: 'api.seeip.org',
-          pathSegments: ['jsonip']);
+      var uri =
+          Uri(scheme: 'https', host: 'api.seeip.org', pathSegments: ['jsonip']);
 
       // Use Mockito to return a successful response when it calls the
       // provided http.Client.
@@ -71,10 +91,8 @@ void main() {
       final client = MockClient();
       var myIP = '192.168.1.1';
       var seeip = SeeipClient(client: client);
-      var uri = Uri(
-          scheme: 'https',
-          host: 'api.seeip.org',
-          pathSegments: ['jsonip']);
+      var uri =
+          Uri(scheme: 'https', host: 'api.seeip.org', pathSegments: ['jsonip']);
 
       // Use Mockito to return a successful response when it calls the
       // provided http.Client.
@@ -85,7 +103,7 @@ void main() {
 
       try {
         await seeip.getIP();
-      } catch(e) {
+      } catch (e) {
         //handle exception
         isError = true;
       }
@@ -99,9 +117,7 @@ void main() {
       var myIP = '192.168.1.1';
       var seeip = SeeipClient(client: client);
       var uri = Uri(
-          scheme: 'https',
-          host: 'ipv6.seeip.org',
-          pathSegments: ['jsonip']);
+          scheme: 'https', host: 'ipv6.seeip.org', pathSegments: ['jsonip']);
 
       // Use Mockito to return a successful response when it calls the
       // provided http.Client.
@@ -112,7 +128,7 @@ void main() {
 
       try {
         await seeip.getIPv6();
-      } catch(e) {
+      } catch (e) {
         //handle exception
         isError = true;
       }
@@ -124,10 +140,8 @@ void main() {
       final client = MockClient();
       var myIP = '192.168.1.1';
       var seeip = SeeipClient(client: client);
-      var uri = Uri(
-          scheme: 'https',
-          host: 'api.seeip.org',
-          pathSegments: ['geoip']);
+      var uri =
+          Uri(scheme: 'https', host: 'api.seeip.org', pathSegments: ['geoip']);
 
       // Use Mockito to return a successful response when it calls the
       // provided http.Client.
@@ -143,12 +157,10 @@ void main() {
       final client = MockClient();
       var myIP = '192.168.1.1';
       var seeip = SeeipClient(client: client);
-      var uri = Uri(
-          scheme: 'https',
-          host: 'api.seeip.org',
-          pathSegments: ['geoip']);
+      var uri =
+          Uri(scheme: 'https', host: 'api.seeip.org', pathSegments: ['geoip']);
 
-      // Use Mockito to return a successful response when it calls the
+      // Use Mockito to return an unsuccessful response when it calls the
       // provided http.Client.
       when(client.get(uri))
           .thenAnswer((_) async => Response('{"ip": "$myIP"}', 400));
@@ -157,7 +169,7 @@ void main() {
 
       try {
         await seeip.getGeoIP();
-      } catch(e) {
+      } catch (e) {
         print(e);
         //handle exception
         isError = true;
@@ -165,7 +177,5 @@ void main() {
 
       expect(isError, isTrue);
     });
-
   });
-
 }
