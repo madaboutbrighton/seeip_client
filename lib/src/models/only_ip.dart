@@ -11,10 +11,12 @@ class OnlyIP {
     this.ip = '',
   });
 
+  // Map JSON response to OnlyIP object.
   static OnlyIP fromJson(Map<String, dynamic> map) {
     return OnlyIP(ip: map['ip'] ?? '');
   }
 
+  // Convert OnlyIP object to a string.
   @override
   String toString() {
     return 'OnlyIP {ip: $ip}';
