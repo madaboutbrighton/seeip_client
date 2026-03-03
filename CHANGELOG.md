@@ -1,3 +1,10 @@
+## 1.1.1
+
+- Added missing type annotations, replacing `var` with `dynamic`.
+- Depreciated geographical IP parameters no longer returned by SeeIP:
+  - `dmaCode`
+  - `areaCode`
+
 ## 1.1.0
 
 - Empty strings always return '' instead of null.
@@ -27,7 +34,7 @@
 
 ## 0.1.1
 
-- Bug fix - Added parsing for int Lat/Long coordinates. 
+- Bug fix - Added parsing for int Lat/Long coordinates.
 
 ## 0.1.0
 

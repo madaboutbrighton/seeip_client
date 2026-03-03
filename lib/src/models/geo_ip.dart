@@ -17,9 +17,11 @@ class GeoIP {
   String region;
 
   /// Designated Market Area (DMA) code (USA and Canada only).
+  @Deprecated('No longer used by SeeIP. Will be removed in next release.')
   String dmaCode;
 
   /// The Public Switch Telephone Network (PSTN) area code.
+  @Deprecated('No longer used by SeeIP. Will be removed in next release.')
   String areaCode;
 
   /// The time zone.
@@ -52,6 +54,7 @@ class GeoIP {
   /// Two-letter ISO 3166-1 alpha-2 country code.
   String countryCode;
 
+  // GeoIP object.
   GeoIP({
     this.ip = '',
     this.organization = '',
@@ -71,14 +74,15 @@ class GeoIP {
     this.countryCode = '',
   });
 
+  // Map JSON response to GeoIP object.
   static GeoIP fromJson(Map<String, dynamic> map) {
     return GeoIP(
       ip: map['ip'] ?? '',
       organization: map['organization'] ?? '',
       city: map['city'] ?? '',
       region: map['region'] ?? '',
-      dmaCode: map['dma_code'] ?? '',
-      areaCode: map['area_code'] ?? '',
+      //dmaCode: map['dma_code'] ?? '',
+      //areaCode: map['area_code'] ?? '',
       timezone: map['timezone'] ?? '',
       offset: _toInt(map['offset'] ?? 0),
       latitude: _toCoordinate(map['latitude']),
@@ -92,6 +96,7 @@ class GeoIP {
     );
   }
 
+  // Convert GeoIP object to a string.
   @override
   String toString() {
     return 'GeoIP {\n\t'
@@ -99,8 +104,8 @@ class GeoIP {
         'organization: $organization\n\t'
         'city: $city\n\t'
         'region: $region\n\t'
-        'dmaCode: $dmaCode\n\t'
-        'areaCode: $areaCode\n\t'
+        //'dmaCode: $dmaCode\n\t'
+        //'areaCode: $areaCode\n\t'
         'timezone: $timezone\n\t'
         'offset: $offset\n\t'
         'latitude: $latitude\n\t'
@@ -114,7 +119,7 @@ class GeoIP {
   }
 
   /// Convert [value] to an [int].
-  static int _toInt(var value) {
+  static int _toInt(dynamic value) {
     // Convert a [String], for example "123", to an int
     if (value is String) {
       value = int.tryParse(value) as String? ?? 0 as String;
@@ -132,7 +137,7 @@ class GeoIP {
   ///
   /// An empty/null coordinate is allowed as converting null to zero
   /// would create a misleading coordinate.
-  static double? _toCoordinate(var value) {
+  static double? _toCoordinate(dynamic value) {
     if (value != null) {
       // Convert a [String], for example "3.7", to a [double]
       if (value is String) {

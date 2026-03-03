@@ -111,7 +111,13 @@ class SeeipClient {
   /// var response = await _getWithResilience('https://ipv4.seeip.org/jsonip');
   /// ```
   Future<Response> _getWithResilience(Uri uri) async {
-    var response = await _client.get(uri);
+    dynamic response;
+
+    try {
+      response = await _client.get(uri);
+    } catch (e) {
+      throw Exception('Cannot reach host $uri');
+    }
 
     switch (response.statusCode) {
       // Too many requests
